@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}AI Studio - Into the Unknown{% endblock %}
+
+{% block content %}
+<div class="chats-container">
+    {% if messages %}
+    {% for msg in messages %}
+    <div class="message {{ 'user-message' if msg.is_user else 'bot-message' }}">
+        {% if not msg.is_user %}
+        <div class="avatar-container">
+            <img class="avatar" src="/static/image/gemini.svg" />
+        </div>
+        {% endif %}
+        <div class="message-content">
+            {% if msg.attachment_path %}
+            {% set filename = msg.attachment_path.replace('\\', '/').split('/')[-1] %}
+            <img src="/static/uploads/chat_files/{{ filename }}" class="img-attachment"
+                style="max-width: 100%; border-radius: 12px; margin-bottom: 8px; display: block;" />
+            {% endif %}
+            <div class="message-text">{{ msg.content }}</div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="prompt-area {{ 'centered' if not messages else '' }}">
+    <div class="prompt-box">
+        <form action="#" class="prompt-form">
+            <input type="text" placeholder="Yapay Zeka'ya sorun.." class="prompt-input" required data-i18n="ask_ai" />
+
+            <div class="prompt-controls">
+                <div class="controls-left">
+                    <button type="button" class="icon-btn-small material-symbols-rounded"
+                        id="add-file-btn">add_circle</button>
+
+                    <!-- Tools Menu Wrapper -->
+                    <div class="tools-wrapper">
+                        <button type="button" class="icon-btn-small material-symbols-rounded" id="tools-btn"
+                            title="Araçlar">
+                            build_circle
+                        </button>
+                        <div class="tools-menu" id="tools-menu">
+                            <div class="tool-item" data-tool="web_search">
+                                <span class="material-symbols-rounded">search</span>
+                                <span>Web'de Ara</span>
+                                <span class="material-symbols-rounded check-icon">check</span>
+                            </div>
+                            <div class="tool-item" data-tool="deep_research">
+                                <span class="material-symbols-rounded">travel_explore</span>
+                                <span>Deep Research</span>
+                                <span class="material-symbols-rounded check-icon">check</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Upload Wrapper -->
+                    <div class="file-upload-wrapper">
+                        <img src="#" class="file-preview" />
+                        <input id="file-input" type="file" accept="image/*, .pdf, .txt, .csv" hidden />
+                        <button id="cancel-file-btn" type="button" class="material-symbols-rounded">close</button>
+                    </div>
+                </div>
+
+                <div class="controls-right">
+                    <div class="model-selector">
+                        <span class="text" data-i18n="choose">Choose</span>
+                        <span class="material-symbols-rounded icon">expand_more</span>
+                        <select id="model-selector" class="model-select-hidden">
+                            {% if ai_list %}
+                            {% for ai in ai_list %}
+                            <option value="{{ ai.id }}" {% if chat and chat.ai_id==ai.id %}selected{% endif %}>{{
+                                ai.name }}</option>
+                            {% endfor %}
+                            {% else %}
+                            <option value="" data-i18n="no_model">Model Yok</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <button type="button" class="icon-btn-small material-symbols-rounded">mic</button>
+                    <button id="send-prompt-btn"
+                        class="icon-btn-small material-symbols-rounded send-btn">arrow_upward</button>
+                    <button id="stop-response-btn" type="button"
+                        class="icon-btn-small material-symbols-rounded stop-btn">stop_circle</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <p class="disclaimer-text" data-i18n="disclaimer">Yapay zeka hata yapabilir, lütfen bilgileri doğrulayın.</p>
+</div>
+<input type="hidden" id="chat-token" value="{{ chat.token if chat else '' }}">
+{% endblock %}

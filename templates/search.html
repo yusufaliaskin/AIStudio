@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}api.aistudio.com - Ara{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/search.css">
+{% endblock %}
+
+{% block content %}
+<div class="search-container">
+    <div class="search-box-wrapper">
+        <span class="material-symbols-rounded search-icon">search</span>
+        <input type="text" id="search-input" placeholder="Sohbet arayın" class="search-input"
+            data-i18n="search_placeholder">
+    </div>
+
+    <div class="results-section">
+        <h2 class="section-header" data-i18n="recent">En son</h2>
+        <div class="results-list" id="results-list">
+            {% for chat in chats %}
+            <a href="{{ url_for('view_chat', token=chat.token) }}" class="result-item"
+                data-title="{{ chat.title or 'Yeni Sohbet' }}">
+                <span class="result-title">{{ chat.title or 'Yeni Sohbet' }}</span>
+                <span class="result-date">{{ chat.created_at.strftime('%d %b') }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/search.js"></script>
+{% endblock %}

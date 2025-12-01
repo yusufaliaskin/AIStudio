@@ -1,0 +1,550 @@
+/* Profile Page Styles - Harmonized with Chat Interface */
+
+/* Remove local variable definitions and use chat.css variables */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* Header */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-title h1 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-glass {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 24px;
+    /* Pill shape like chat buttons */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-glass:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+/* Stats Grid */
+/* Utilities */
+.full-width {
+    width: 100%;
+}
+
+.profile-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+}
+
+.btn:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--subheading-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 24px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.back-btn:hover {
+    background-color: var(--secondary-hover-color);
+    color: var(--text-color);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-item {
+    background: var(--secondary-color);
+    border: 1px solid transparent;
+    padding: 1.5rem;
+    border-radius: 24px;
+    /* Consistent rounded corners */
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.stat-item:hover {
+    background: var(--secondary-hover-color);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    /* Use accent color for numbers */
+}
+
+.stat-label {
+    color: var(--subheading-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Cards */
+.card {
+    background: var(--primary-color);
+    /* Keep transparent/primary to blend */
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+}
+
+.card-title i {
+    color: var(--subheading-color);
+}
+
+.btn-primary {
+    background-color: var(--text-color);
+    /* Inverted for primary action */
+    color: var(--primary-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Lists */
+.api-list,
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    transition: background 0.2s;
+    border: 1px solid transparent;
+}
+
+.list-item:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+.item-info h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--text-color);
+}
+
+.item-info p {
+    font-size: 0.85rem;
+    color: var(--subheading-color);
+}
+
+.item-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* Circular buttons */
+    border: none;
+    background: transparent;
+    color: var(--subheading-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background-color: var(--secondary-hover-color);
+    color: var(--text-color);
+}
+
+.btn-icon.delete:hover {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+body.dark-theme .btn-icon.delete:hover {
+    background-color: #450a0a;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+}
+
+.btn:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--subheading-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 24px;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.back-btn:hover {
+    background-color: var(--secondary-hover-color);
+    color: var(--text-color);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-item {
+    background: var(--secondary-color);
+    border: 1px solid transparent;
+    padding: 1.5rem;
+    border-radius: 24px;
+    /* Consistent rounded corners */
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.stat-item:hover {
+    background: var(--secondary-hover-color);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    /* Use accent color for numbers */
+}
+
+.stat-label {
+    color: var(--subheading-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Cards */
+.card {
+    background: var(--primary-color);
+    /* Keep transparent/primary to blend */
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color);
+}
+
+.card-title i {
+    color: var(--subheading-color);
+}
+
+.btn-primary {
+    background-color: var(--text-color);
+    /* Inverted for primary action */
+    color: var(--primary-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Lists */
+.api-list,
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    transition: background 0.2s;
+    border: 1px solid transparent;
+}
+
+.list-item:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+.item-info h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--text-color);
+}
+
+.item-info p {
+    font-size: 0.85rem;
+    color: var(--subheading-color);
+}
+
+.item-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    /* Circular buttons */
+    border: none;
+    background: transparent;
+    color: var(--subheading-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background-color: var(--secondary-hover-color);
+    color: var(--text-color);
+}
+
+.btn-icon.delete:hover {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+body.dark-theme .btn-icon.delete:hover {
+    background-color: #450a0a;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 10px;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .item-actions {
+        width: 100%;
+        justify-content: flex-end;
+        border-top: 1px solid var(--border-color);
+        padding-top: 0.75rem;
+        margin-top: 0.25rem;
+    }
+
+    .status-badge {
+        margin-left: 0;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .stat-item {
+        padding: 1rem;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .card-header .btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-glass {
+        width: 100%;
+        justify-content: center;
+    }
+}

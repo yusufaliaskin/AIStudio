@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Profil - api.aistudio.com{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile_extra.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Header -->
+
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+        <div class="stat-item">
+            <span class="stat-value">{{ active_chats }}</span>
+            <span class="stat-label" data-i18n="active_chats">Aktif Sohbet</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value">{{ completed_chats }}</span>
+            <span class="stat-label" data-i18n="completed">Tamamlanan</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value">{{ total_apis }}</span>
+            <span class="stat-label" data-i18n="connected_apis">Bağlı API</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-value">{{ failed_chats }}</span>
+            <span class="stat-label" data-i18n="archived">Arşivlenmiş</span>
+        </div>
+    </div>
+
+    <!-- API Settings Card -->
+    <div class="card full-width">
+        <div class="card-header">
+            <div class="card-title">
+                <span class="material-symbols-rounded">smart_toy</span> <span data-i18n="ai_models">Yapay Zeka
+                    Modelleri</span>
+            </div>
+            <a href="{{ url_for('ai_settings') }}" class="btn-primary">
+                <span class="material-symbols-rounded">add</span> <span data-i18n="add_new">Yeni Ekle</span>
+            </a>
+        </div>
+        <div class="api-list">
+            {% if ai_list %}
+            {% for ai in ai_list %}
+            <div class="list-item">
+                <div class="item-info">
+                    <h4>{{ ai.name }}</h4>
+                    <p>{{ ai.model_type }}</p>
+                </div>
+                <div class="item-actions">
+                    <button class="btn-icon edit-ai-btn" data-id="{{ ai.id }}" data-name="{{ ai.name }}"
+                        data-model="{{ ai.model_type }}" data-key="{{ ai.api_key }}" data-url="{{ ai.api_url or '' }}">
+                        <span class="material-symbols-rounded">edit</span>
+                    </button>
+                    <button class="btn-icon delete delete-ai-btn" data-id="{{ ai.id }}">
+                        <span class="material-symbols-rounded">delete</span>
+                    </button>
+                    <span class="status-badge status-active" data-i18n="active">Aktif</span>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p style="color: var(--subheading-color); text-align: center; padding: 1rem;" data-i18n="no_api">Henüz
+                eklenmiş
+                bir
+                API yok.
+            </p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Recent Activity Card -->
+    <div class="card full-width">
+        <div class="card-header">
+            <div class="card-title">
+                <span class="material-symbols-rounded">history</span> <span data-i18n="recent_activity">Son
+                    Aktiviteler</span>
+            </div>
+        </div>
+        <div class="chat-list">
+            {% if chats %}
+            {% for chat in chats %}
+            <div class="list-item">
+                <div class="item-info">
+                    <h4>{{ chat.title or 'Yeni Sohbet' }}</h4>
+                    <p>{{ chat.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+                </div>
+                <div class="item-actions">
+                    <a href="{{ url_for('view_chat', token=chat.token) }}" class="btn-icon" title="Görüntüle">
+                        <span class="material-symbols-rounded">open_in_new</span>
+                    </a>
+                    <button class="btn-icon delete delete-chat-btn" data-id="{{ chat.id }}" title="Sil">
+                        <span class="material-symbols-rounded">delete</span>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p style="color: var(--subheading-color); text-align: center; padding: 1rem;" data-i18n="no_history">Henüz
+                sohbet
+                geçmişi
+                yok.
+            </p>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<!-- Edit AI Modal -->
+<div id="editAiModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title" data-i18n="edit_model">Model Düzenle</h3>
+            <button class="close-modal">
+                <span class="material-symbols-rounded">close</span>
+            </button>
+        </div>
+        <form id="editAiForm">
+            <input type="hidden" name="api_id" id="edit_api_id">
+            <div class="form-group">
+                <label class="form-label" data-i18n="model_name">Model Adı</label>
+                <input type="text" name="api_name" id="edit_api_name" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" data-i18n="model_type">Model Tipi</label>
+                <select name="api_model" id="edit_api_model" class="form-input" required>
+                    <option value="gemini-2.5-flash">Google Gemini 2.5 Flash</option>
+                    <option value="gemini-2.5-pro">Google Gemini 2.5 Pro</option>
+                    <option value="gpt-4o">GPT-4o</option>
+                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                    <option value="claude-4-opus">Claude 4 Opus</option>
+                    <option value="claude-4-sonnet">Claude 4 Sonnet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" data-i18n="api_key">API Anahtarı</label>
+                <input type="password" name="api_key" id="edit_api_key" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" data-i18n="api_url">API URL (Opsiyonel)</label>
+                <input type="url" name="api_url" id="edit_api_url" class="form-input">
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                <button type="submit" class="btn-primary" style="flex: 1; justify-content: center;"
+                    data-i18n="update">Güncelle</button>
+                <button type="button" class="btn-glass close-modal-btn" style="flex: 1; justify-content: center;"
+                    data-i18n="cancel">İptal</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+{% endblock %}

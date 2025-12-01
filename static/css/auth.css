@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    background-color: #ffffff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #1a1a1a;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Optional: Add a subtle shadow or border for better distinction on large screens */
+    /* background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.05); */
+}
+
+.auth-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 24px 0;
+    text-align: center;
+    color: #000;
+    letter-spacing: -0.5px;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #1a1a1a;
+    outline: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    background-color: #fff;
+    -webkit-appearance: none;
+    /* Remove default iOS styling */
+}
+
+.input-field:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.next-button {
+    width: 100%;
+    padding: 16px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 8px;
+    height: auto;
+    min-height: 52px;
+}
+
+.next-button:hover {
+    background-color: #333;
+}
+
+.next-button:active {
+    transform: scale(0.98);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 32px 0;
+    color: #666;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.divider::before {
+    margin-right: 16px;
+}
+
+.divider::after {
+    margin-left: 16px;
+}
+
+.social-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a1a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+    transition: background-color 0.2s;
+    position: relative;
+    text-decoration: none;
+    box-sizing: border-box;
+    min-height: 52px;
+}
+
+.social-button:hover {
+    background-color: #f9f9f9;
+    border-color: #d1d1d1;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 16px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.social-text {
+    flex: 1;
+    text-align: center;
+    padding-right: 52px;
+    /* Balance icon width + margins */
+}
+
+.footer-text {
+    margin-top: 32px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+.footer-link {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-links {
+    margin-top: 40px;
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
+
+.footer-links a {
+    color: #888;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    padding: 16px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.alert.error {
+    background-color: #FEF2F2;
+    color: #991B1B;
+    border: 1px solid #FEE2E2;
+}
+
+.alert.success {
+    background-color: #F0FDF4;
+    color: #166534;
+    border: 1px solid #BBF7D0;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+        align-items: flex-start;
+        /* Allow scrolling if content is tall */
+    }
+
+    .auth-container {
+        padding: 20px 0;
+        margin: auto 0;
+        /* Center vertically if possible */
+    }
+
+    .title {
+        font-size: 28px;
+        margin-bottom: 32px;
+    }
+
+    .input-field {
+        padding: 14px;
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+    }
+
+    .social-button {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .social-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 12px;
+    }
+
+    .social-text {
+        padding-right: 44px;
+    }
+}
+
+/* Dark Mode Support (Optional, based on system preference) */
+@media (prefers-color-scheme: dark) {
+    /* Uncomment if dark mode is desired for auth pages */
+    /*
+    body {
+        background-color: #111;
+        color: #fff;
+    }
+    
+    .title {
+        color: #fff;
+    }
+    
+    .input-field {
+        background-color: #222;
+        border-color: #333;
+        color: #fff;
+    }
+    
+    .input-field:focus {
+        border-color: #fff;
+    }
+    
+    .next-button {
+        background-color: #fff;
+        color: #000;
+    }
+    
+    .next-button:hover {
+        background-color: #e0e0e0;
+    }
+    
+    .social-button {
+        background-color: #222;
+        border-color: #333;
+        color: #fff;
+    }
+    
+    .social-button:hover {
+        background-color: #333;
+    }
+    
+    .divider, .footer-text, .footer-links, .footer-links a {
+        color: #888;
+    }
+    
+    .footer-link {
+        color: #fff;
+    }
+    */
+}

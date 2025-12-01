@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+
+{% block title %}Ayarlar - api.aistudio.com{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="settings-container">
+    <h1 class="page-title" data-i18n="settings">Settings</h1>
+
+    <!-- Profile Card -->
+    <div class="settings-card profile-card" id="profile-card-trigger">
+        <div class="profile-info">
+            <div class="avatar">
+                {% if user and user.profile_image and user.profile_image != 'default.png' %}
+                <img src="{{ url_for('static', filename='uploads/profile_pics/' + user.profile_image) }}" alt="Profile">
+                {% else %}
+                <img src="/static/aistudio.png" alt="Profile">
+                {% endif %}
+            </div>
+            <div class="username">{{ user.username if user else 'Misafir' }}</div>
+        </div>
+        <span class="material-symbols-rounded arrow-icon">chevron_right</span>
+    </div>
+
+    <!-- General Section -->
+    <div class="section-label" data-i18n="general">General</div>
+    <div class="settings-group">
+        <div class="settings-item">
+            <div class="item-left">
+                <span class="material-symbols-rounded item-icon">light_mode</span>
+                <span class="item-text" data-i18n="theme">Theme</span>
+            </div>
+            <div class="item-right">
+                <select id="theme-select" class="settings-select">
+                    <option value="system" data-i18n="system">System</option>
+                    <option value="dark" data-i18n="dark">Dark</option>
+                    <option value="light" data-i18n="light">Light</option>
+                </select>
+            </div>
+        </div>
+        <div class="settings-item">
+            <div class="item-left">
+                <span class="material-symbols-rounded item-icon">translate</span>
+                <span class="item-text" data-i18n="language">Language</span>
+            </div>
+            <div class="item-right">
+                <select id="language-select" class="settings-select">
+                    <option value="en" data-i18n="english">English</option>
+                    <option value="tr" data-i18n="turkish">Türkçe</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Section -->
+    <div class="section-label" data-i18n="chat_settings">Chat</div>
+    <div class="settings-group">
+        <div class="settings-item clickable" id="saved-prompts-trigger">
+            <div class="item-left">
+                <span class="material-symbols-rounded item-icon">deployed_code</span>
+                <span class="item-text" data-i18n="saved_prompts">Saved Prompts</span>
+            </div>
+            <span class="material-symbols-rounded arrow-icon">chevron_right</span>
+        </div>
+
+    </div>
+
+    <!-- Manage Section -->
+    <div class="section-label" data-i18n="manage">Manage</div>
+    <div class="settings-group">
+        <div class="settings-item clickable">
+            <div class="item-left">
+                <span class="material-symbols-rounded item-icon">payments</span>
+                <span class="item-text" data-i18n="subscription">Subscription</span>
+            </div>
+            <span class="material-symbols-rounded arrow-icon">chevron_right</span>
+        </div>
+    </div>
+
+    <!-- About US Section -->
+    <div class="section-label" data-i18n="about_us">About US</div>
+    <div class="settings-group">
+        <div class="settings-item clickable">
+            <div class="item-left">
+                <span class="material-symbols-rounded item-icon">description</span>
+                <span class="item-text" data-i18n="terms_of_service">Terms of Service</span>
+            </div>
+            <span class="material-symbols-rounded arrow-icon">chevron_right</span>
+        </div>
+        <div class="settings-item clickable">
+            <div class="item-left">
+                <span class="material-symbols-rounded item-icon">privacy_tip</span>
+                <span class="item-text" data-i18n="privacy_policy">Privacy Policy</span>
+            </div>
+            <span class="material-symbols-rounded arrow-icon">chevron_right</span>
+        </div>
+    </div>
+
+    <!-- Log Out Button -->
+    <button class="logout-btn" onclick="window.location.href='/logout'">
+        <span class="material-symbols-rounded">logout</span>
+        <span data-i18n="logout">Log Out</span>
+    </button>
+
+    <!-- Account Settings Modal -->
+    <div id="account-settings-modal" class="modal-overlay">
+        <div class="modal-content account-modal-content">
+            <div class="modal-header">
+                <h2 data-i18n="account">Hesap</h2>
+                <button id="close-account-modal" class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="account-profile-section">
+                    <div class="large-avatar">
+                        {% if user and user.profile_image and user.profile_image != 'default.png' %}
+                        <img src="{{ url_for('static', filename='uploads/profile_pics/' + user.profile_image) }}"
+                            alt="Profile">
+                        {% else %}
+                        <img src="/static/aistudio.png" alt="Profile">
+                        {% endif %}
+                        <button class="edit-avatar-btn">
+                            <span class="material-symbols-rounded">edit</span>
+                        </button>
+                    </div>
+                    <div class="account-name-display">{{ user.username if user else 'Misafir' }}</div>
+                    <div class="account-email-display">{{ user.email if user else 'misafir@example.com' }}</div>
+                </div>
+
+                <form id="account-settings-form" class="account-settings-form">
+                    <div class="settings-group modal-group">
+                        <!-- Name Row -->
+                        <div class="modal-info-row">
+                            <div class="row-left">
+                                <span class="material-symbols-rounded row-icon">person</span>
+                                <label class="info-label" for="username-input" data-i18n="name">İsim</label>
+                            </div>
+                            <div class="info-value-container">
+                                <input type="text" id="username-input" class="transparent-input"
+                                    value="{{ user.username if user else '' }}">
+                                <span class="material-symbols-rounded edit-icon">edit</span>
+                            </div>
+                        </div>
+
+                        <!-- Phone Row -->
+                        <div class="modal-info-row">
+                            <div class="row-left">
+                                <span class="material-symbols-rounded row-icon">phone</span>
+                                <label class="info-label" for="phone-input" data-i18n="phone">Telefon</label>
+                            </div>
+                            <div class="info-value-container">
+                                <input type="tel" id="phone-input" class="transparent-input"
+                                    value="{{ user.phone if user and user.phone else '' }}" placeholder="Ekle">
+                                <span class="material-symbols-rounded edit-icon">edit</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Button (Hidden by default) -->
+                    <div id="save-changes-row" class="modal-action-row"
+                        style="display: none; justify-content: center; margin-top: 1rem;">
+                        <button type="submit" class="action-btn primary-btn full-width"
+                            data-i18n="save_changes">Değişiklikleri Kaydet</button>
+                    </div>
+                </form>
+
+                <div class="settings-group modal-group">
+                    <!-- Logout Row -->
+                    <div class="modal-info-row clickable" onclick="window.location.href='/logout'">
+                        <div class="row-left">
+                            <span class="material-symbols-rounded row-icon">logout</span>
+                            <span class="info-label" data-i18n="logout">Çıkış Yap</span>
+                        </div>
+                        <span class="material-symbols-rounded arrow-icon">chevron_right</span>
+                    </div>
+
+                    <!-- Delete Row -->
+                    <div class="modal-info-row clickable delete-row">
+                        <div class="row-left">
+                            <span class="material-symbols-rounded row-icon">delete</span>
+                            <span class="info-label" data-i18n="delete_account">Hesabı Sil</span>
+                        </div>
+                        <span class="material-symbols-rounded arrow-icon">chevron_right</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Saved Prompts Modal -->
+    <div id="saved-prompts-modal" class="modal-overlay">
+        <div class="modal-content prompts-modal-content">
+            <div class="modal-header">
+                <h2 data-i18n="saved_prompts">Saved Prompts</h2>
+                <button id="close-prompts-modal" class="close-modal-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- List View -->
+                <div id="prompts-list-view">
+                    <div class="prompts-list" id="prompts-list">
+                        <!-- Prompts will be loaded here -->
+                    </div>
+                    <button id="add-prompt-btn" class="action-btn primary-btn full-width" style="margin-top: 1rem;">
+                        <span class="material-symbols-rounded">add</span>
+                        <span data-i18n="add_new_prompt">Add New Prompt</span>
+                    </button>
+                </div>
+
+                <!-- Edit/Add View -->
+                <div id="prompt-form-view" style="display: none;">
+                    <form id="prompt-form">
+                        <input type="hidden" id="prompt-id">
+                        <div class="form-group">
+                            <label class="info-label" data-i18n="title">Title</label>
+                            <input type="text" id="prompt-title" class="transparent-input bordered" required
+                                placeholder="e.g. Analysis AI">
+                        </div>
+                        <div class="form-group">
+                            <label class="info-label" data-i18n="instruction">Instruction</label>
+                            <textarea id="prompt-content" class="transparent-input bordered" rows="6" required
+                                placeholder="You are an expert analyst..."></textarea>
+                        </div>
+                        <div class="modal-action-row" style="justify-content: space-between; margin-top: 1rem;">
+                            <button type="button" id="cancel-prompt-btn" class="action-btn">Cancel</button>
+                            <button type="submit" class="action-btn primary-btn">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}
