@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - AI Studio{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/about.css">
+{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title" data-i18n="about_hero_title">Revolutionizing AI Interaction</h1>
+            <p class="hero-subtitle" data-i18n="about_hero_subtitle">One platform, infinite possibilities. Experience
+                the power of multiple advanced AI models in a single, unified workspace.</p>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">10+</span>
+                <span class="stat-label" data-i18n="stat_models">AI Models</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">1000+</span>
+                <span class="stat-label" data-i18n="stat_users">Active Users</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label" data-i18n="stat_uptime">Uptime</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Grid -->
+    <section class="mission-vision-section">
+        <div class="mv-grid">
+            <div class="mv-card mission-card">
+                <div class="card-icon">
+                    <span class="material-symbols-rounded">rocket_launch</span>
+                </div>
+                <h2 class="card-title" data-i18n="about_mission_title">Our Mission</h2>
+                <p class="card-text" data-i18n="about_mission_desc">
+                    Our mission is to democratize access to artificial intelligence. We believe in building tools that
+                    empower
+                    individuals and businesses to leverage the power of AI without the complexity.
+                </p>
+            </div>
+            <div class="mv-card vision-card">
+                <div class="card-icon">
+                    <span class="material-symbols-rounded">visibility</span>
+                </div>
+                <h2 class="card-title" data-i18n="vision_title">Our Vision</h2>
+                <p class="card-text" data-i18n="vision_desc">
+                    To create a world where advanced artificial intelligence is accessible, understandable, and
+                    beneficial for everyone, fostering a future of human-AI collaboration.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <h2 class="section-heading" data-i18n="features_title">Why Choose AI Studio?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-symbols-rounded">hub</span>
+                </div>
+                <h3 class="feature-title" data-i18n="feat_multi_title">Multi-Model Support</h3>
+                <p class="feature-desc" data-i18n="feat_multi_desc">Seamlessly switch between GPT-4, Gemini, Claude, and
+                    more without losing context.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-symbols-rounded">lock</span>
+                </div>
+                <h3 class="feature-title" data-i18n="feat_secure_title">Secure & Private</h3>
+                <p class="feature-desc" data-i18n="feat_secure_desc">Enterprise-grade encryption ensures your
+                    conversations and data remain private.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-symbols-rounded">tune</span>
+                </div>
+                <h3 class="feature-title" data-i18n="feat_custom_title">Fully Customizable</h3>
+                <p class="feature-desc" data-i18n="feat_custom_desc">Tailor the interface, prompts, and AI behaviors to
+                    match your specific workflow.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="tech-stack-section">
+        <h2 class="section-heading" data-i18n="tech_stack_title">Powered By Modern Tech</h2>
+        <div class="tech-logos">
+            <div class="tech-logo" title="Python">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python">
+            </div>
+            <div class="tech-logo" title="Flask">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg" alt="Flask">
+            </div>
+            <div class="tech-logo" title="Supabase">
+                <img src="https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png" alt="Supabase">
+            </div>
+            <div class="tech-logo" title="OpenAI">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI">
+            </div>
+            <div class="tech-logo" title="Google Gemini">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini">
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <h2 class="section-heading" data-i18n="values_title">Our Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <span class="material-symbols-rounded">lightbulb</span>
+                </div>
+                <h3 class="value-title" data-i18n="val_innovation">Innovation</h3>
+                <p class="value-desc" data-i18n="val_innovation_desc">Constantly pushing the boundaries of what is
+                    possible with AI.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <span class="material-symbols-rounded">security</span>
+                </div>
+                <h3 class="value-title" data-i18n="val_privacy">Privacy First</h3>
+                <p class="value-desc" data-i18n="val_privacy_desc">Your data is yours. We prioritize security and
+                    confidentiality above all.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <span class="material-symbols-rounded">favorite</span>
+                </div>
+                <h3 class="value-title" data-i18n="val_user">User Centric</h3>
+                <p class="value-desc" data-i18n="val_user_desc">We build for you. Every feature is designed to enhance
+                    your experience.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <span class="material-symbols-rounded">verified</span>
+                </div>
+                <h3 class="value-title" data-i18n="val_excellence">Excellence</h3>
+                <p class="value-desc" data-i18n="val_excellence_desc">We do not settle for good. We strive for the best
+                    in every line of code.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="section-heading" data-i18n="faq_title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q1">Is AI Studio free to use?</span>
+                    <span class="material-symbols-rounded faq-icon">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a1">We offer a generous free tier for everyone. Premium features are available for
+                        power users.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q2">Which AI models are supported?</span>
+                    <span class="material-symbols-rounded faq-icon">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a2">We currently support GPT-4, Gemini Pro, Claude 3, and are constantly adding
+                        more.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q3">Is my data secure?</span>
+                    <span class="material-symbols-rounded faq-icon">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a3">Yes, we use industry-standard encryption and do not share your personal data
+                        with third parties.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q4">Do you have a mobile app?</span>
+                    <span class="material-symbols-rounded faq-icon">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p data-i18n="faq_a4">We are currently developing our mobile application, scheduled for release in
+                        Q1 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap-section">
+        <h2 class="section-heading" data-i18n="roadmap_title">Future Roadmap</h2>
+        <div class="roadmap-container">
+            <div class="roadmap-item">
+                <div class="roadmap-marker"></div>
+                <div class="roadmap-content">
+                    <span class="roadmap-date">Q1 2026</span>
+                    <h3 data-i18n="roadmap_q1">Mobile App Launch</h3>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-marker"></div>
+                <div class="roadmap-content">
+                    <span class="roadmap-date">Q2 2026</span>
+                    <h3 data-i18n="roadmap_q2">Voice Interface</h3>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-marker"></div>
+                <div class="roadmap-content">
+                    <span class="roadmap-date">Q3 2026</span>
+                    <h3 data-i18n="roadmap_q3">Team Collaboration</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+        <div class="founder-card-large">
+            <div class="founder-image-wrapper">
+                <img src="/static/aistudio.png" alt="Founder" class="founder-img">
+            </div>
+            <div class="founder-content">
+                <h2 class="founder-name-large">Yusuf Ali Aşkın</h2>
+                <p class="founder-role-large" data-i18n="about_founder_role">Lead Developer & Creator</p>
+                <p class="founder-bio" data-i18n="about_founder_desc">
+                    Passionate about bridging the gap between human creativity and machine intelligence.
+                    Dedicated to creating intuitive user experiences and robust backend systems.
+                </p>
+                <div class="founder-socials">
+                    <a href="#" class="social-link"><span class="material-symbols-rounded">code</span></a>
+                    <a href="#" class="social-link"><span class="material-symbols-rounded">alternate_email</span></a>
+                    <a href="#" class="social-link"><span class="material-symbols-rounded">link</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 class="cta-title" data-i18n="join_us_title">Ready to experience the future?</h2>
+        <a href="/chat" class="cta-button" data-i18n="join_us_btn">Start Chatting Now</a>
+    </section>
+</div>
+
+<script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', event => {
+            const active = document.querySelector('.faq-question.active');
+            if (active && active !== item) {
+                active.classList.remove('active');
+                active.nextElementSibling.style.maxHeight = null;
+            }
+            item.classList.toggle('active');
+            const content = item.nextElementSibling;
+            if (item.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        });
+    });
+</script>
+{% endblock %}

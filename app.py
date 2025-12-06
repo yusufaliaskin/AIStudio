@@ -272,6 +272,24 @@ def settings():
     
     return render_template('settings.html', user=user, chats=chats)
 
+# Geri bildirim sayfası
+@app.route('/feedback')
+@login_required
+def feedback():
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    chats = Chat.query.filter_by(user_id=user_id).order_by(Chat.created_at.desc()).all()
+    return render_template('feedback.html', user=user, chats=chats)
+
+# Hakkımızda sayfası
+@app.route('/about')
+@login_required
+def about():
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    chats = Chat.query.filter_by(user_id=user_id).order_by(Chat.created_at.desc()).all()
+    return render_template('about.html', user=user, chats=chats)
+
 # Yapay zeka ayarları
 @app.route('/profile/ai', methods=['GET', 'POST'])
 @login_required
@@ -1027,4 +1045,4 @@ if __name__ == '__main__':
         except Exception as e:
             pass
     
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000)

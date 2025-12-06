@@ -442,14 +442,14 @@ body.sidebar-closed #main-menu-btn {
     position: absolute;
     left: 0;
     width: 100%;
-    padding: 24px;
+    padding: 15px;
     display: flex;
     justify-content: center;
     background: linear-gradient(to top, var(--primary-color) 80%, transparent);
     z-index: 10;
 
     /* Smooth Transition Logic */
-    top: 100%;
+    top: 88%;
     transform: translateY(-100%);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -600,7 +600,7 @@ body.bot-responding .file-upload-wrapper {
     text-align: center;
     width: 100%;
     position: absolute;
-    bottom: -30px;
+    bottom: -25px;
     left: 0;
 }
 
@@ -1073,17 +1073,6 @@ body:not(.dark-theme) .menu-divider {
     }
 }
 
-.modal-content {
-    background-color: var(--secondary-color);
-    width: 100%;
-    max-width: 400px;
-    border-radius: 24px;
-    padding: 24px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-    color: var(--text-color);
-    position: relative;
-    border: 1px solid var(--border-color);
-}
 
 .modal-header {
     display: flex;
@@ -1270,51 +1259,13 @@ body:not(.dark-theme) .menu-divider {
 
 .modal-content {
     background-color: var(--secondary-color);
-    width: 100%;
-    max-width: 400px;
+    width: 90%;
     border-radius: 24px;
     padding: 24px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
     color: var(--text-color);
     position: relative;
     border: 1px solid var(--border-color);
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.modal-header h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0;
-}
-
-.close-modal-btn {
-    background: none;
-    border: none;
-    color: var(--subheading-color);
-    font-size: 24px;
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
-}
-
-.close-modal-btn:hover {
-    background-color: var(--secondary-hover-color);
-}
-
-.modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
 }
 
 .lang-option {
@@ -1331,6 +1282,7 @@ body:not(.dark-theme) .menu-divider {
 }
 
 /* Tools Menu */
+
 .tools-wrapper {
     position: relative;
     display: flex;

@@ -75,7 +75,7 @@
 .form-input {
     width: 100%;
     padding: 10px 16px;
-    background-color: var(--secondary-color);
+    background-color: #e4f0ff;
     /* Input bg different from modal bg */
     border: 1px solid transparent;
     border-radius: 12px;

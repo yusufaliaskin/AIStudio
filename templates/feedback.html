@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback - AI Studio{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/feedback.css">
+{% endblock %}
+
+{% block content %}
+<div class="feedback-container">
+    <div class="page-header">
+        <h1 class="page-title" data-i18n="feedback_title">Feedback</h1>
+        <p class="page-subtitle" data-i18n="feedback_subtitle">Help us improve your experience</p>
+    </div>
+
+    <div class="feedback-card">
+        <form id="feedback-form" onsubmit="handleFeedbackSubmit(event)">
+            <div class="form-group">
+                <label class="form-label" for="feedback-text" data-i18n="feedback_label">What's on your mind?</label>
+                <textarea id="feedback-text" class="feedback-textarea"
+                    placeholder="Tell us what you like, what you don't, or what you'd like to see..."
+                    data-i18n="feedback_placeholder" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" data-i18n="attachments">Attachments (Optional)</label>
+                <div class="file-upload-area" id="drop-zone">
+                    <input type="file" id="file-input" class="file-input" multiple accept="image/*"
+                        onchange="handleFileSelect(this)">
+                    <span class="material-symbols-rounded upload-icon">cloud_upload</span>
+                    <div class="upload-text" data-i18n="drag_drop">Click or drag images here</div>
+                    <div class="upload-subtext" data-i18n="max_size">Max file size: 5MB</div>
+                </div>
+                <div id="preview-area" class="preview-area"></div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="material-symbols-rounded">send</span>
+                <span data-i18n="send_feedback">Send Feedback</span>
+            </button>
+        </form>
+
+        <div id="success-message" class="success-message">
+            <span class="material-symbols-rounded success-icon">check_circle</span>
+            <h2 class="success-title" data-i18n="thank_you">Thank You!</h2>
+            <p class="success-text" data-i18n="feedback_received">Your feedback has been received. We appreciate your
+                input.</p>
+            <button class="submit-btn" onclick="resetForm()"
+                style="margin-top: 1.5rem; background-color: var(--secondary-hover-color); color: var(--text-color);">
+                <span data-i18n="send_another">Send Another</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const previewArea = document.getElementById('preview-area');
+    const feedbackForm = document.getElementById('feedback-form');
+    const successMessage = document.getElementById('success-message');
+
+    // Drag and drop handlers
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+        dropZone.classList.add('drag-active');
+    }
+
+    function unhighlight(e) {
+        dropZone.classList.remove('drag-active');
+    }
+
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles(files);
+    }
+
+    function handleFileSelect(input) {
+        const files = input.files;
+        handleFiles(files);
+    }
+
+    function handleFiles(files) {
+        ([...files]).forEach(uploadFile);
+    }
+
+    function uploadFile(file) {
+        if (!file.type.startsWith('image/')) return;
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function () {
+            const preview = document.createElement('div');
+            preview.className = 'preview-item';
+            preview.innerHTML = `
+                <img src="${reader.result}" alt="Preview">
+                <div class="remove-preview" onclick="this.parentElement.remove()">&times;</div>
+            `;
+            previewArea.appendChild(preview);
+        }
+    }
+
+    function handleFeedbackSubmit(e) {
+        e.preventDefault();
+
+        // Simulate sending data
+        const feedbackText = document.getElementById('feedback-text').value;
+        const images = previewArea.children.length;
+
+        console.log('Feedback submitted:', {
+            text: feedbackText,
+            imageCount: images
+        });
+
+        // Show success animation
+        feedbackForm.style.display = 'none';
+        successMessage.style.display = 'block';
+    }
+
+    function resetForm() {
+        feedbackForm.reset();
+        previewArea.innerHTML = '';
+        successMessage.style.display = 'none';
+        feedbackForm.style.display = 'block';
+    }
+</script>
+{% endblock %}
