@@ -1,8 +1,12 @@
-# code.AIStudio
+# Dark Theme
 
-![Project Banner](https://via.placeholder.com/1200x400?text=code.AIStudio+Dashboard)
+<img width="960" height="497" alt="image" src="https://github.com/user-attachments/assets/a12a4459-9e29-498d-a482-8c4bdbd0693e" />
 
-**code.AIStudio** is a cutting-edge, feature-rich conversational AI platform designed to bridge the gap between multiple LLM providers and a seamless user experience. Built with Flask and enhanced with a modern, glassmorphism-inspired UI, it offers a unified interface for interacting with Google Gemini, OpenAI GPT, and Claude models.
+# White Theme
+
+<img width="960" height="499" alt="image" src="https://github.com/user-attachments/assets/91980253-74b0-488c-b674-18880306fabb" />
+
+**AIStudio** is a cutting-edge, feature-rich conversational AI platform designed to bridge the gap between multiple LLM providers and a seamless user experience. Built with Flask and enhanced with a modern, glassmorphism-inspired UI, it offers a unified interface for interacting with Google Gemini, OpenAI GPT, and Claude models.
 
 Whether you are a developer, a researcher, or an enthusiast, code.AIStudio provides the tools you need for deep research, code generation, and creative writing, all within a secure and personalized environment.
 
@@ -67,6 +71,9 @@ code.AIStudio/
 
 Follow these instructions to set up the project locally.
 
+<img width="950" height="494" alt="image" src="https://github.com/user-attachments/assets/ab3243fc-cab5-48bd-b2a7-6d00c97fbcd8" />
+
+
 ### Prerequisites
 
 *   Python 3.8 or higher
@@ -117,6 +124,8 @@ Follow these instructions to set up the project locally.
 3.  **Start Chatting**: Go to the Chat page. You can now send messages, upload images, or use the "Deep Research" toggle if enabled.
 4.  **Manage History**: Use the sidebar to switch between conversations or use the Search page to find specific topics.
 
+<img width="950" height="498" alt="image" src="https://github.com/user-attachments/assets/d4fd9105-ff60-4d6c-831a-79daf396e9f0" />
+
 ---
 
 ## 🤝 Contributing
@@ -142,3 +151,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 **Yusuf Ali Aşkın** - [GitHub Profile](https://github.com/yusufaliaskin)
 
 Project Link: [https://github.com/yusufaliaskin/AIStudio](https://github.com/yusufaliaskin/AIStudio)
+
